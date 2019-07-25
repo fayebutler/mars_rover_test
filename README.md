@@ -12,6 +12,12 @@ Relies on python3 and pytest
 
 Then follow the instructions to input the data.
 
+## Assumptions made
+
+- Each line of input will end with a new line character "\n"
+- Each character in the coordinate lines will be separated by a space
+- The movement letters will not be separated by spaces
+
 ## Intro
 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
