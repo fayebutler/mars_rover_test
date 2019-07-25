@@ -1,8 +1,15 @@
+from distutils import util
+
 import utils
 
 
-def main(input: str) -> str:
-    input_lines = input.split('\n')
+def main(rover_input: str) -> str:
+    """
+    Reads the input and outputs the final position of the rovers
+    :param rover_input: See Readme (string consisting of multiple lines)
+    :return: A final coordinate and direction for each rover given
+    """
+    input_lines = rover_input.split('\n')
     top_right_positions = input_lines[0].strip().split(' ')
     top_right_coord = tuple(int(position) for position in top_right_positions)
 
@@ -27,3 +34,19 @@ def main(input: str) -> str:
 
     return " \n".join(final_rovers)
 
+
+if __name__ == "__main__":
+    top_right_coord = input("Please input the top right coordinates, e.g. 5 5 \n")
+    rover_input_list = [top_right_coord]
+    finished = False
+    while not finished:
+        rover_coord = input("Please input the coordinates and direction of a rover, e.g. 1 2 N \n")
+        rover_movements = input("Please input the rovers movements, e.g. LMLMLMLM \n")
+        rover_input_list.append(rover_coord)
+        rover_input_list.append(rover_movements)
+        finished = util.strtobool(input("Have you finished adding rovers? True/False \n"))
+
+    rover_input = " \n".join(rover_input_list)
+    result = main(rover_input)
+    print("Final rover positions: \n")
+    print(result)
