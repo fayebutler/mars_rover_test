@@ -46,15 +46,7 @@ def limit_grid_point(current_point: tuple, top_right_coord: tuple) -> tuple:
     :param top_right_coord: Top right corner of the grid (x, y)
     :return: new grid point (x, y)
     """
-    limited_point = [current_point[0], current_point[1]]
-    if current_point[0] > top_right_coord[0]:
-        limited_point[0] = top_right_coord[0]
-    elif current_point[0] < 0:
-        limited_point[0] = 0
+    limited_x = max(0, min(current_point[0], top_right_coord[0]))
+    limited_y = max(0, min(current_point[1], top_right_coord[1]))
 
-    if current_point[1] > top_right_coord[1]:
-        limited_point[1] = top_right_coord[1]
-    elif limited_point[1] < 0:
-        limited_point[1] = 0
-
-    return tuple(limited_point)
+    return limited_x, limited_y
