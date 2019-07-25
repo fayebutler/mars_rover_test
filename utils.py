@@ -22,6 +22,14 @@ def get_new_direction(current_direction: str, rotation: str) -> str:
     return DIRECTIONS[current_direction_index]
 
 
+DIRECTION_VECTORS = {
+    'N': (0, 1),
+    'E': (1, 0),
+    'S': (0, -1),
+    'W': (-1, 0)
+}
+
+
 def get_new_grid_point(current_point: tuple, direction) -> tuple:
     """
     Return the new grid point
@@ -29,14 +37,7 @@ def get_new_grid_point(current_point: tuple, direction) -> tuple:
     :param direction: one of the DIRECTIONS (N, E, S, W)
     :return: new grid point (x, y)
     """
-    if direction == "N":
-        return current_point[0], current_point[1] + 1
-    elif direction == "E":
-        return current_point[0] + 1, current_point[1]
-    elif direction == "S":
-        return current_point[0], current_point[1] - 1
-    elif direction == "W":
-        return current_point[0] - 1, current_point[1]
+    return tuple(map(lambda a, b: a+b, current_point, DIRECTION_VECTORS[direction]))
 
 
 def limit_grid_point(current_point: tuple, top_right_coord: tuple) -> tuple:
